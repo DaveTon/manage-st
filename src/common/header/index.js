@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import state from './store'
+import * as actions from './store/actions';
 
 class Header extends React.Component {
     render(){
-        const { focused, list } = this.props
+        const { handelBtnClick, focused, list } = this.props
         return(
-            <div>index
+            <div>
+                <input value={focused} />
+                <button onClick={handelBtnClick}>切换</button>
                 {list.map((item, index) => {
                     return (
                         <span key={index}>{item}</span>
@@ -17,9 +19,14 @@ class Header extends React.Component {
     }
 }
 
-const mapState = (state) = ({
+const mapToState = (state) => ({
     focused: state.header.focused,
     list: state.header.list
 })
+const mapToDispatch = (dispatch) => ({
+    handelBtnClick(){
+        dispatch(actions.changeName())
+    }
+})
 
-export default connect(mapState, null)(Header)
+export default connect(mapToState, mapToDispatch)(Header)

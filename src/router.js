@@ -2,6 +2,7 @@ import React from 'react';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 
 import Header from './common/header';
+import Home from './common/home';
 
 export default class Router extends React.Component {
     render(){

@@ -4,10 +4,13 @@ import * as actions from './store/actions';
 
 class Header extends React.Component {
     render(){
-        const { handelBtnClick, focused, list } = this.props
+        const { handelChangeItem, handelBtnClick, inputValue, list } = this.props
         return(
             <div>
-                <input value={focused} />
+                <input 
+                    value={inputValue}
+                    onChange={handelChangeItem} 
+                />
                 <button onClick={handelBtnClick}>切换</button>
                 {list.map((item, index) => {
                     return (
@@ -21,11 +24,16 @@ class Header extends React.Component {
 
 const mapToState = (state) => ({
     focused: state.header.focused,
-    list: state.header.list
+    list: state.header.list,
+    inputValue: state.header.inputValue
 })
 const mapToDispatch = (dispatch) => ({
     handelBtnClick(){
         dispatch(actions.changeName())
+    },
+    handelChangeItem(e){
+        const value = e.target.value
+        dispatch(actions.changeItem(value))
     }
 })
 

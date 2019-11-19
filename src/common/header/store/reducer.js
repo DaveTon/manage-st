@@ -2,7 +2,8 @@ import * as constants from "./constants";
 
 const defaultState = {
     list: ['Dave', 'Tang'],
-    focused: true
+    focused: true,
+    inputValue: 'Hello World'
 }
 
 export default (state = defaultState, action) => {
@@ -10,6 +11,9 @@ export default (state = defaultState, action) => {
     switch(action.type){
         case constants.CHANGE_NAME:
             newState.focused = false;
+            return newState;
+        case constants.CHANGE_ITEM:
+            newState.inputValue = action.value;
             return newState;
 
         default:

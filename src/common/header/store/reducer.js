@@ -10,7 +10,7 @@ export default (state = defaultState, action) => {
     const newState = JSON.parse(JSON.stringify(state))
     switch(action.type){
         case constants.CHANGE_NAME:
-            newState.focused = false;
+            newState.inputValue = false;
             return newState;
         case constants.CHANGE_ITEM:
             newState.inputValue = action.value;

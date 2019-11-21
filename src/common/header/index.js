@@ -12,11 +12,13 @@ class Header extends React.Component {
                     onChange={handelChangeItem} 
                 />
                 <button onClick={handelBtnClick}>切换</button>
-                {list.map((item, index) => {
-                    return (
-                        <span key={index}>{item}</span>
-                    )
-                })}
+                {
+                    list.map((item, index) => {
+                        return (
+                            <span key={index}>{item}</span>
+                        )
+                    })
+                }
             </div>
         )
     }
